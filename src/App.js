@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Dino from './Dino';
 
@@ -7,8 +7,23 @@ function App() {
     title: "Dinosaurs are awesome",
     author: "Stealthy Stegosaurus",
     body: "Check out this body property",
-    comments: ["First!", "Great post", "Hire this author now!"]
+    comments: [
+      {
+        username: "romebell",
+        comment: "First!"
+      },
+      {
+        username: "romebell",
+        comment: "Great post"
+      },
+      {
+        username: "romebell",
+        comment: "Hire this author now!"
+      },
+    ]
   }
+
+  
 
   return (
     <div className="App">
