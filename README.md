@@ -119,7 +119,7 @@ const handleFormEdit = (e) => {
 ### Title `h1` Author `p` Input Blog Post `form`
 
 ```js
-h1>{props.title} Blog!</h1>
+<h1>{props.title} Blog!</h1>
 <p>Written by: {props.author}</p>
 <form onSubmit={handleFormEdit}>
     <label htmlFor="body">Add new blogpost: </label>
