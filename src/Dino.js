@@ -43,7 +43,7 @@ function Dino(props) {
       <br />
        
       <br />
-      <Alert variant="success">
+      <Alert style={{ marginLeft: "10%", marginRight: "10%"}}variant="success">
         <Alert.Heading>Blog Post</Alert.Heading>
         <p>{state.body}</p>
         <button onClick={handleBodyEdit}>Edit Post</button>

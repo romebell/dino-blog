@@ -2,6 +2,8 @@
 
 Lab: Dino Blog
 
+![screenshot](./screenshot.png)
+
 ```js
 import React, { useState } from "react";
 import Comment from "./Comment.js";
