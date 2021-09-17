@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Comment from "./Comment.js";
 import Alert from "react-bootstrap/Alert";
+import VFX from "react-vfx";
 
 function Dino(props) {
   let [state, setState] = useState({
@@ -14,7 +15,11 @@ function Dino(props) {
   });
 
   // handleBodyEdit
-  const handleBodyEdit = () => {};
+  const handleBodyEdit = () => {
+      let input = prompt("What is the new edit for the blog post?");
+      console.log(input);
+      setState({ body: input });
+  };
 
   // handleFormEdit
   const handleFormEdit = (e) => {
@@ -36,14 +41,14 @@ function Dino(props) {
         <button type="submit">Submit</button>
       </form>
       <br />
+       
       <br />
       <Alert variant="success">
         <Alert.Heading>Blog Post</Alert.Heading>
-            <p>{state.body}</p>
+        <p>{state.body}</p>
+        <button onClick={handleBodyEdit}>Edit Post</button>
         <hr />
-        <p className="mb-0">
-          {props.author}
-        </p>
+        <p className="mb-0">{props.author}</p>
       </Alert>
 
       <div className="com">
@@ -55,3 +60,16 @@ function Dino(props) {
 }
 
 export default Dino;
+
+
+ {/* <VFX.VFXProvider>
+          <VFX.VFXSpan shader="rgbShift">WHATS UP BUFFNESS?</VFX.VFXSpan>
+        </VFX.VFXProvider>
+        <p>On a scale of 1-10 how did you do at the gym today? </p>
+        <p>BE HONEST...</p>
+        <VFX.VFXProvider>
+          <VFX.VFXSpan class="go" shader="blink">
+            Did you even go?
+          </VFX.VFXSpan>
+          <VFX.VFXSpan>Hello</VFX.VFXSpan>
+        </VFX.VFXProvider> */}

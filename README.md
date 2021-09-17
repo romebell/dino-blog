@@ -1,70 +1,152 @@
-# Getting Started with Create React App
+# dino-blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Lab: Dino Blog
 
-## Available Scripts
+```js
+import React, { useState } from "react";
+import Comment from "./Comment.js";
+import Alert from "react-bootstrap/Alert";
+import VFX from "react-vfx";
 
-In the project directory, you can run:
+function Dino(props) {
+  let [state, setState] = useState({
+    body: props.body,
+    tempBody: "",
+  });
+  console.log(state); // { body: 'Check out this body property', tempBody: ''}
 
-### `yarn start`
+  let allComments = props.comments.map(function (c, i) {
+    return <Comment key={i} body={c.comment} username={c.username} />;
+  });
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  // handleBodyEdit
+  const handleBodyEdit = () => {
+    let input = prompt("What is the new edit for the blog post?");
+    console.log(input);
+    setState({ body: input });
+  };
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  // handleFormEdit
+  const handleFormEdit = (e) => {
+    e.preventDefault();
+    setState({ body: state.tempBody });
+  };
 
-### `yarn test`
+  return (
+    <div>
+      <h1>{props.title} Blog!</h1>
+      <p>Written by: {props.author}</p>
+      <form onSubmit={handleFormEdit}>
+        <label htmlFor="body">Add new blogpost: </label>
+        <input
+          type="text"
+          name="body"
+          onChange={(e) => setState({ tempBody: e.target.value })}
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+      <br />
+      <Alert variant="success">
+        <Alert.Heading>Blog Post</Alert.Heading>
+        <p>{state.body}</p>
+        <button onClick={handleBodyEdit}>Edit Post</button>
+        <hr />
+        <p className="mb-0">{props.author}</p>
+      </Alert>
 
-### `yarn build`
+      <div className="com">
+        <h3>Comments:</h3>
+        {allComments}
+      </div>
+    </div>
+  );
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+export default Dino;
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## `Imports`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```js
+import React, { useState } from "react";
+import Comment from "./Comment.js";
+import Alert from "react-bootstrap/Alert";
+import VFX from "react-vfx";
+```
 
-### `yarn eject`
+## Inside of `Dino` Component
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### `useState` to Manage `state`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```js
+let [state, setState] = useState({
+  body: props.body,
+  tempBody: "",
+});
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Show `allComments`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```js
+let allComments = props.comments.map(function (c, i) {
+  return <Comment key={i} body={c.comment} username={c.username} />;
+});
+```
 
-## Learn More
+### `handleBodyEdit` function to Update `body`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```js
+const handleBodyEdit = () => {
+  let input = prompt("What is the new edit for the blog post?");
+  console.log(input);
+  setState({ body: input });
+};
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `handleFormEdit` function to submit form and update `body`
 
-### Code Splitting
+```js
+const handleFormEdit = (e) => {
+  e.preventDefault();
+  setState({ body: state.tempBody });
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Title `h1` Author `p` Input Blog Post `form`
 
-### Analyzing the Bundle Size
+```js
+h1>{props.title} Blog!</h1>
+<p>Written by: {props.author}</p>
+<form onSubmit={handleFormEdit}>
+    <label htmlFor="body">Add new blogpost: </label>
+    <input
+        type="text"
+        name="body"
+        onChange={(e) => setState({ tempBody: e.target.value })}
+    />
+    <button type="submit">Submit</button>
+</form>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### `Alert` (react boostrap) Blog Post
 
-### Making a Progressive Web App
+```js
+Alert variant="success">
+<Alert.Heading>Blog Post</Alert.Heading>
+    <p>{state.body}</p>
+    <button onClick={handleBodyEdit}>Edit Post</button>
+    <hr />
+    <p className="mb-0">{props.author}</p>
+</Alert>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### `allComments` being rendered
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```js
+<div className="com">
+    <h3>Comments:</h3>
+    {allComments}
+</div>
+```
