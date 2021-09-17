@@ -133,8 +133,8 @@ h1>{props.title} Blog!</h1>
 ### `Alert` (react boostrap) Blog Post
 
 ```js
-Alert variant="success">
-<Alert.Heading>Blog Post</Alert.Heading>
+ <Alert variant="success">
+    <Alert.Heading>Blog Post</Alert.Heading>
     <p>{state.body}</p>
     <button onClick={handleBodyEdit}>Edit Post</button>
     <hr />
