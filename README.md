@@ -1,6 +1,6 @@
-# dino-blog
+# 🦖🦕Dino Blog
 
-Lab: Dino Blog
+Lab/Codealong 
 
 ![screenshot](./screenshot.png)
 
