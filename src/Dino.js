@@ -60,16 +60,3 @@ function Dino(props) {
 }
 
 export default Dino;
-
-
- {/* <VFX.VFXProvider>
-          <VFX.VFXSpan shader="rgbShift">WHATS UP BUFFNESS?</VFX.VFXSpan>
-        </VFX.VFXProvider>
-        <p>On a scale of 1-10 how did you do at the gym today? </p>
-        <p>BE HONEST...</p>
-        <VFX.VFXProvider>
-          <VFX.VFXSpan class="go" shader="blink">
-            Did you even go?
-          </VFX.VFXSpan>
-          <VFX.VFXSpan>Hello</VFX.VFXSpan>
-        </VFX.VFXProvider> */}
